@@ -1,7 +1,8 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, redirect
 from icalendar import Calendar, Event
 import re
 import urllib.parse
+import base64
 
 app = Flask(__name__)
 
@@ -41,6 +42,18 @@ def parse_ical():
     # mimetype = 'text/calendar'
     mimetype = 'text/plain'
     return Response(cal.to_ical(), mimetype=mimetype)
+
+@app.route('/redirect', methods=['GET'])
+def redirect_url():
+    encoded_url = request.args.get('data')
+    if not encoded_url:
+        return {"error": "No encoded data provided"}, 400
+
+    # Decode the URL
+    decoded_url = base64.b64decode(encoded_url).decode()
+
+    # Redirect to the decoded URL
+    return redirect(decoded_url)
 
 if __name__ == '__main__':
     app.run(debug=True)
