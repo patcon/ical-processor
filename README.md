@@ -1,5 +1,7 @@
 # iCal Tracking Processor
 
+![](/screenshot.png)
+
 This simple app allows a given ical feed to be processed to swap out urls with trackable redirects links. These redirect links can then be monitored to understand popularity of the overall calendar and individual events.
 
 ## Usage
