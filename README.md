@@ -41,3 +41,13 @@ This endpoint 302 redirects to a url that is base64-encoded in the `data` query 
 
 For example, `https://example.com` is base64-encoded as `aHR0cHM6Ly9leGFtcGxlLmNvbS8=`. You can view this endpoint working at:
 http://127.0.0.1:5000/redirect?data=aHR0cHM6Ly9leGFtcGxlLmNvbS8=
+
+### Development
+
+For local development, feel free to use a tool that exposes localhost on the public internet. This will allow you to import an ical feed that is being processed on your local machine.
+
+`ngrok` is a great tool that can be [installed](https://ngrok.com/download) and used for free via:
+
+```
+ngrok http -subdomain=my-ical-processor 5000
+```
