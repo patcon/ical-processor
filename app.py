@@ -4,6 +4,7 @@ import re
 import urllib.parse
 import base64
 import logging
+import os
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -12,7 +13,7 @@ app = Flask(__name__)
 def strip_html_tags(text):
     return re.sub('<[^<]+?>', '', text)
 
-API_BASE_URL = 'http://127.0.0.1:5000'
+API_BASE_URL = os.environ.get('ICALPROC_BASE_URL', 'http://127.0.0.1:5000')
 
 def generate_encoded_redirect_url(url):
     encoded_url = base64.b64encode(url.encode()).decode()
