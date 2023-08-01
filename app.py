@@ -3,11 +3,20 @@ from icalendar import Calendar, Event
 import re
 import urllib.parse
 import base64
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
 def strip_html_tags(text):
     return re.sub('<[^<]+?>', '', text)
+
+API_BASE_URL = 'http://127.0.0.1:5000'
+
+def generate_encoded_redirect_url(url):
+    encoded_url = base64.b64encode(url.encode()).decode()
+    return f'{API_BASE_URL}/redirect?data={encoded_url}'
 
 @app.route('/parse-ical', methods=['GET'])
 def parse_ical():
@@ -34,7 +43,7 @@ def parse_ical():
 
                 # Replace all URLS with something else
                 for url in urls:
-                    description = description.replace(url, 'https://example.com')
+                    description = description.replace(url, generate_encoded_redirect_url(url))
 
                 component['description'] = description
 
@@ -54,6 +63,10 @@ def redirect_url():
 
     # Decode the URL
     decoded_url = base64.b64decode(encoded_url).decode()
+
+    # Log the URL visit event
+    # TODO: Log this to a database or analytics service
+    logging.debug("Redirect event: %s", decoded_url)
 
     # Redirect to the decoded URL
     return redirect(decoded_url)
