@@ -38,9 +38,12 @@ def parse_ical():
 
                 component['description'] = description
 
+    mimetype = 'text/calendar'
+    # Return plaintext response if debugging
+    if request.args.get('debug'):
+        mimetype = 'text/plain'
+
     # Return debug response with all the urls found
-    # mimetype = 'text/calendar'
-    mimetype = 'text/plain'
     return Response(cal.to_ical(), mimetype=mimetype)
 
 @app.route('/redirect', methods=['GET'])

@@ -15,8 +15,10 @@ The app will now be served from http://127.0.0.1:5000
 
 A sample ical feed is `https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics`.
 
+Normally, the returned mimetype is for downloadable ical format, but we can force an inspectable text response in the browser via query param `debug=1`.
+
 For example, you may view this endpoint working at:
-http://127.0.0.1:5000/parse-ical?ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
+http://127.0.0.1:5000/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
 
 ### Endpoint: `/redirect`
 
