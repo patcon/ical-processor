@@ -4,6 +4,15 @@
 
 This simple app allows a given ical feed to be processed to swap out urls with trackable redirects links. These redirect links can then be monitored to understand popularity of the overall calendar and individual events.
 
+## Development To Do
+
+- [x] Create `/parse-ical` endpoint to substitute event urls with trackable links
+- [x] Create stub `/redirect` endpoint to redirect trackable link to destination
+- [ ] Deploy demo app
+- [ ] Track link visit count in backend (Google Analytics as MVP)
+- [ ] Create front splash page
+- [ ] Make ical links user-specific, so can track unique user visits
+
 ## Usage
 
 ```
