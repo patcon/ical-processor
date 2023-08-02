@@ -66,3 +66,11 @@ ngrok http -subdomain=my-ical-processor 8000
 In browser, confirm working via: https://my-ical-processor.ngrok.io/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
 
 In Google Calendar, import this URL to test: `https://my-ical-processor.ngrok.io/parse-ical?dical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
+
+## Deployment
+
+### Render
+
+Render is a platform that offers free hosting of small apps.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/patcon/ical-processor)
