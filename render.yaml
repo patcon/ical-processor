@@ -2,6 +2,7 @@ services:
   - type: web
     name: myapp
     runtime: python
+    plan: free
     buildCommand: "poetry install --no-root"
     startCommand: "poetry run gunicorn app:app"
     envVars:
