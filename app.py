@@ -28,7 +28,7 @@ def generate_encoded_redirect_url(url):
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html')
+    return render_template('index.html', base_url=get_base_url())
 
 @app.route('/parse-ical', methods=['GET'])
 def parse_ical():
