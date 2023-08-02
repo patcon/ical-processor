@@ -10,7 +10,3 @@ services:
         value: "3.10.9"
       - key: POETRY_VERSION
         value: "1.3.2"
-      - key: ICALPROC_BASE_URL
-        # Will allow setting custom value during deploy.
-        # Example: https://my-ical-processor.onrender.com
-        sync: false

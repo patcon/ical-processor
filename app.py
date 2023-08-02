@@ -13,11 +13,21 @@ app = Flask(__name__)
 def strip_html_tags(text):
     return re.sub('<[^<]+?>', '', text)
 
-API_BASE_URL = os.environ.get('ICALPROC_BASE_URL', 'http://127.0.0.1:5000')
+def get_base_url():
+    if os.environ.get('RENDER_EXTERNAL_URL'):
+        return os.environ.get('RENDER_EXTERNAL_URL')
+
+    if os.environ.get('ICALPROC_BASE_URL'):
+        return os.environ.get('ICALPROC_BASE_URL')
+
+    if "gunicorn" in os.environ.get("SERVER_SOFTWARE", ""):
+        return 'https://icalproc.herokuapp.com'
+
+    return 'http://127.0.0.1:8000'
 
 def generate_encoded_redirect_url(url):
     encoded_url = base64.b64encode(url.encode()).decode()
-    return f'{API_BASE_URL}/redirect?data={encoded_url}'
+    return f'{get_base_url()}/redirect?data={encoded_url}'
 
 @app.route('/parse-ical', methods=['GET'])
 def parse_ical():
