@@ -33,7 +33,7 @@ poetry install
 poetry run gunicorn app:app
 ```
 
-The app will now be served from http://127.0.0.1:8000
+The app will now be served from `http://127.0.0.1:8000`
 
 If you are self-hosting and serving from a custom public domain, be sure to set the envvar `ICALPROC_BASE_URL` at runtime like so:
 
