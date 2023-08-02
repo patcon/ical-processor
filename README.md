@@ -9,16 +9,28 @@ This simple app allows a given ical feed to be processed to swap out urls with t
 - [x] Create `/parse-ical` endpoint to substitute event urls with trackable links
 - [x] Create stub `/redirect` endpoint to redirect trackable link to destination
 - [x] Deploy demo app
-- [ ] Add Deploy button to README
+- [x] Add Deploy button to README
 - [ ] Track link visit count in backend (Google Analytics as MVP)
 - [ ] Create front splash page
 - [ ] Make ical links user-specific, so can track unique user visits
 
 ## Usage
 
+<details>
+<summary>Requirements...</summary>
+
+- Python 3.10+
+  - `pyenv` can help with this. ([Installation][pyenv-install])
+- `poetry` Python package manager ([Installation][poetry-install])
+
+   [pyenv-install]: https://github.com/pyenv/pyenv#installation
+   [poetry-install]: https://python-poetry.org/docs/#installation
+
+</details>
+
 ```
-pipenv install
-pipenv run gunicorn app:app
+poetry install
+poetry run gunicorn app:app
 ```
 
 The app will now be served from http://127.0.0.1:8000
@@ -26,7 +38,7 @@ The app will now be served from http://127.0.0.1:8000
 If serving from any other non-local domain, be sure to set the envvar `ICALPROC_BASE_URL` at runtime like so:
 
 ```
-ICALPROC_BASE_URL=http://mydomain.com pipenv run gunicorn app:app
+ICALPROC_BASE_URL=http://mydomain.com poetry run gunicorn app:app
 ```
 
 ### Endpoint: `/parse-ical`
@@ -49,7 +61,7 @@ This endpoint 302 redirects to a url that is base64-encoded in the `data` query 
 For example, `https://example.com` is base64-encoded as `aHR0cHM6Ly9leGFtcGxlLmNvbS8=`. You can view this endpoint working at:
 http://127.0.0.1:8000/redirect?data=aHR0cHM6Ly9leGFtcGxlLmNvbS8=
 
-### Development
+## Development
 
 For local development, feel free to use a tool that exposes localhost on the public internet. This will allow you to import an ical feed that is being processed on your local machine.
 
@@ -57,7 +69,7 @@ For local development, feel free to use a tool that exposes localhost on the pub
 
 ```
 # Run this in first terminal
-ICALPROC_BASE_URL=https://my-ical-processor.ngrok.io pipenv run gunicorn app:app
+ICALPROC_BASE_URL=https://my-ical-processor.ngrok.io poetry run gunicorn app:app
 
 # Run this in another terminal
 ngrok http -subdomain=my-ical-processor 8000
