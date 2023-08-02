@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, redirect
+from flask import Flask, request, Response, redirect, render_template
 from icalendar import Calendar
 import re
 import urllib.parse
@@ -25,6 +25,10 @@ def get_base_url():
 def generate_encoded_redirect_url(url):
     encoded_url = base64.b64encode(url.encode()).decode()
     return f'{get_base_url()}/redirect?data={encoded_url}'
+
+@app.route('/', methods=['GET'])
+def home():
+    return render_template('index.html')
 
 @app.route('/parse-ical', methods=['GET'])
 def parse_ical():
