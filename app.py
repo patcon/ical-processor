@@ -1,5 +1,5 @@
 from flask import Flask, request, Response, redirect
-from icalendar import Calendar, Event
+from icalendar import Calendar
 import re
 import urllib.parse
 import base64
