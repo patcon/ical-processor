@@ -20,9 +20,6 @@ def get_base_url():
     if os.environ.get('ICALPROC_BASE_URL'):
         return os.environ.get('ICALPROC_BASE_URL')
 
-    if "gunicorn" in os.environ.get("SERVER_SOFTWARE", ""):
-        return 'https://icalproc.herokuapp.com'
-
     return 'http://127.0.0.1:8000'
 
 def generate_encoded_redirect_url(url):
