@@ -35,7 +35,7 @@ poetry run gunicorn app:app
 
 The app will now be served from http://127.0.0.1:8000
 
-If serving from any other non-local domain, be sure to set the envvar `ICALPROC_BASE_URL` at runtime like so:
+If you are self-hosting and serving from a custom public domain, be sure to set the envvar `ICALPROC_BASE_URL` at runtime like so:
 
 ```
 ICALPROC_BASE_URL=http://mydomain.com poetry run gunicorn app:app
@@ -50,7 +50,7 @@ A sample ical feed is `https://calendar.google.com/calendar/ical/8ba1e5d2f51d287
 Normally, the returned mimetype is for downloadable ical format, but we can force an inspectable text response in the browser via query param `debug=1`.
 
 For example, you may view this endpoint working at:
-http://127.0.0.1:8000/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
+https://ical-processor.onrender.com/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics
 
 Be sure to remove `debug=1` when adding the ical feed to Google Calendar.
 
@@ -59,7 +59,7 @@ Be sure to remove `debug=1` when adding the ical feed to Google Calendar.
 This endpoint 302 redirects to a url that is base64-encoded in the `data` query param.
 
 For example, `https://example.com` is base64-encoded as `aHR0cHM6Ly9leGFtcGxlLmNvbS8=`. You can view this endpoint working at:
-http://127.0.0.1:8000/redirect?data=aHR0cHM6Ly9leGFtcGxlLmNvbS8=
+https://ical-processor.onrender.com/redirect?data=aHR0cHM6Ly9leGFtcGxlLmNvbS8=
 
 ## Development
 
