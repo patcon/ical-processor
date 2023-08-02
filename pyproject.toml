@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ical-processor"
+version = "0.1.0"
+description = ""
+authors = ["Patrick Connolly <patrick.c.connolly@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ical_processor"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.3.2"
+icalendar = "^5.0.7"
+gunicorn = "^21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
