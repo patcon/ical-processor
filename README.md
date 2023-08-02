@@ -8,7 +8,8 @@ This simple app allows a given ical feed to be processed to swap out urls with t
 
 - [x] Create `/parse-ical` endpoint to substitute event urls with trackable links
 - [x] Create stub `/redirect` endpoint to redirect trackable link to destination
-- [ ] Deploy demo app
+- [x] Deploy demo app
+- [ ] Add Deploy button to README
 - [ ] Track link visit count in backend (Google Analytics as MVP)
 - [ ] Create front splash page
 - [ ] Make ical links user-specific, so can track unique user visits
