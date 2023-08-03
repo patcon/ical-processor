@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Splash Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+    <script src="https://unpkg.com/vue@3.3.4"></script>
+    <!-- "defer" means that the DOM gets loaded before the script is executed -->
+    <script src="{{url_for('static', filename='app.js')}}" defer></script>
     <!-- Include Tailwind CSS via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body id="app">
     <a class="github-fork-ribbon" href="https://github.com/patcon/ical-processor" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
     <!-- Source: https://flowbite.com/docs/components/navbar/#default-navbar -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
@@ -71,6 +74,7 @@
                 <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border">Download</button>
                 <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border">Copy</button>
             </div>
+            <div>[[ message ]]</div>
         </form>
     </section>
 </body>
