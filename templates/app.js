@@ -21,6 +21,17 @@ const app = Vue.createApp({
       initialize() {
         this.generateUrls();
       },
+      copyTrackedUrl() {
+        const input = this.$refs.trackedUrl;
+        // Source: https://stackoverflow.com/a/60239236
+        if (!navigator.clipboard) {
+          input.select();
+          input.setSelectionRange(0, 99999);
+          document.execCommand('copy');
+        } else {
+          navigator.clipboard.writeText(input.value);
+        }
+      },
   }
 })
 // Delimiters changed to ES6 template string style
