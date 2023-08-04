@@ -37,13 +37,10 @@
     <!-- TODO -->
     <section class="bg-white">
         <div class="text-base text-gray-900 p-4">
-            <p class="mb-3">
+            <p class="mb-3 font-medium text-lg">
                 Convert any iCal feed into one with trackable links.
             </p>
-            <p class="mb-3">
-                Example: <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="{{ base_url }}/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics">{{ base_url }}/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics</a>
-            </p>
-            <p class="mb-3">
+            <p class="mb-3 text-sm">
                 Note: This is still a work-in-progress, and the tracking backend and stats viewer is not yet implemented.
             </p>
         </div>
@@ -57,7 +54,8 @@
                 <input type="text" id="ical_url"
                     class="block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
                     placeholder="https://example.com/calendar.ics"
-                    value="https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics"
+                    :value="icalUrl"
+                    @input="handleIcalUrlInput"
                 >
             </div>
             <div class="mb-6">
@@ -66,15 +64,18 @@
                 >Tracked URL</label>
                 <input text="text" id="tracked_url" disabled
                     class="block w-full p-2.5 bg-gray-100 border border-gray-300 text-gray-500 text-sm rounded-lg"
-                    value="{{ base_url }}/parse-ical?debug=1&ical_url=https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics"
+                    :value="trackedUrl"
                 >
             </div>
             <div class="mb-6">
-                <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-blue-300 text-white bg-blue-700 hover:bg-blue-800">Preview</button>
-                <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border">Download</button>
-                <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border">Copy</button>
+                <a :href="trackedUrlPreview"
+                    class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-blue-300 text-white bg-blue-700 hover:bg-blue-800"
+                >Preview Feed</a>
+                <a :href="trackedUrl"
+                    class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border"
+                >Download File</a>
+                <button class="font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 focus:ring-gray-200 text-gray bg-white hover:bg-gray-100 hover:text-blue-700 border-gray-200 border">Copy URL</button>
             </div>
-            <div>[[ message ]]</div>
         </form>
     </section>
 </body>
