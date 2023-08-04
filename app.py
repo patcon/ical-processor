@@ -30,6 +30,10 @@ def generate_encoded_redirect_url(url):
 def home():
     return render_template('index.html', base_url=get_base_url())
 
+@app.route('/js/app.js', methods=['GET'])
+def app_script():
+    return render_template('app.js', base_url=get_base_url())
+
 @app.route('/parse-ical', methods=['GET'])
 def parse_ical():
     ical_url = request.args.get('ical_url')

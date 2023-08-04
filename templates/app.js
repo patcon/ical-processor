@@ -12,11 +12,14 @@ const app = Vue.createApp({
   methods: {
       handleIcalUrlInput(event) {
         this.icalUrl = event.target.value;
-        this.trackedUrl = `http://127.0.0.1:5000/parse-ical?ical_url=${this.icalUrl}`;
-        this.trackedUrlPreview = `http://127.0.0.1:5000/parse-ical?debug=1&ical_url=${this.icalUrl}`;
+        this.generateUrls();
+      },
+      generateUrls() {
+        this.trackedUrl = `{{ base_url }}/parse-ical?ical_url=${this.icalUrl}`;
+        this.trackedUrlPreview = `{{ base_url }}/parse-ical?debug=1&ical_url=${this.icalUrl}`;
       },
       initialize() {
-        this.trackedUrl = `http://127.0.0.1:5000/parse-ical?ical_url=${this.icalUrl}`;
+        this.generateUrls();
       },
   }
 })
