@@ -2,6 +2,7 @@ const app = Vue.createApp({
   data() {
       return {
           icalUrl: "https://calendar.google.com/calendar/ical/8ba1e5d2f51d2872501c5a28473e8e954c0cae2471468db75ba740bc1abc8036%40group.calendar.google.com/public/basic.ics",
+          icalUrlPlaceholder: "https://example.com/calendar.ics",
           trackedUrl: "",
           trackedUrlPreview: "",
       }
@@ -15,8 +16,12 @@ const app = Vue.createApp({
         this.generateUrls();
       },
       generateUrls() {
-        this.trackedUrl = `{{ base_url }}/parse-ical?ical_url=${this.icalUrl}`;
-        this.trackedUrlPreview = `{{ base_url }}/parse-ical?debug=1&ical_url=${this.icalUrl}`;
+        let icalUrl = this.icalUrl
+        if (icalUrl == "") {
+          icalUrl = this.icalUrlPlaceholder;
+        }
+        this.trackedUrl = `{{ base_url }}/parse-ical?ical_url=${icalUrl}`;
+        this.trackedUrlPreview = `{{ base_url }}/parse-ical?debug=1&ical_url=${icalUrl}`;
       },
       initialize() {
         this.generateUrls();
